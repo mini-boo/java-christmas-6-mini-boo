@@ -73,3 +73,70 @@
 ### 12월 이벤트 배지
 + [X] 총혜택 금액에 따라 이벤트 배지 이름 다르게 보이게 할 것.
 + [X] 배지가 없을 경우 '없음'으로 출력
+
+---
+
+## 클래스 별 책임 분리
+
++ Controller
+    + InputView에서 값 받아오기
+    + 주문 금액 / 혜택 계산 진행
+    + OutputView에 값 전달
+
+<br>
+
++ Service
+    + 총 주문 금액 계산
+    + 이벤트 별 할인 금액 계산
+  
+<br>
+
++ Constant
+    + Controller 상수 관리
+    + Service 상수 관리
+
+
+
+<br>
+
++ Validator
+    + 날짜에 대한 예외 처리
+    + 메뉴에 대한 예외 처리
++ Exception
+  + Validator에 따른 에러 메시지 관리
+
+<br>
+
++ Domain
+  + Calendar : 평일, 주말, 특별한 날 관리할 수 있는 enum class
+  + Menu : 에피타이저, 음료, 디저트, 메인 메뉴 관리할 수 있는 enum class
+  + Benefit : 할인 이벤트 이름 관리할 수 있는 enum class
+  + EventBadge : 이벤트 배지 이름을 관리할 수 있는 enum class
+  + OrderMenu : 주문 메뉴에 대한 메뉴 이름, 개수, 가격을 저장 및 관리하는 객체
+  + VisitDate : 예상 방문 날짜를 관리하는 객체
+
+<br>
+
++ View
+  + InputView
+    + 예상 방문 날짜를 int로 변환하여 전달
+    + 주문 메뉴를 쉼표(,)에 따라 구분하여 리스트에 저장해 전달
+  + OutputView
+    + 출력 메시지 관리
+
+<br>
+
++ Application
+  + 프로그램 실행
+
+---
+
+## 테스트 코드
++ Application Test
+  + 기능 작동 테스트
+  + 예외 처리 테스트
+
+<br>
+
++ MenuTest
+  + 메뉴 객체 생성 테스트
